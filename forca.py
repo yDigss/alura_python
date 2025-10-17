@@ -1,5 +1,7 @@
-print("*"*28)
-print("Bem-Vindo ao jogo de Forca!")
-print("*"*28)
+def jogar_forca():
 
-print("Fim do Jogo!")
+    print("*"*28)
+    print("Bem-Vindo ao jogo de Forca!")
+    print("*"*28)
+
+    print("Fim do Jogo!")
