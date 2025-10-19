@@ -5,3 +5,6 @@ def jogar_forca():
     print("*"*28)
 
     print("Fim do Jogo!")
+
+if __name__ == "__main__":
+    jogar_forca()

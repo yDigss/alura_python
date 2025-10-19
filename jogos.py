@@ -1,20 +1,25 @@
 from adivinhacao import jogar_adivinhacao
 from forca import jogar_forca
 
-print("*"*21)
-print("Escolha o seu jogo!")
-print("*"*21)
+def escolhe_jogo():
 
-print("1 - Forca \n2 - Adivinhação")
-jogo = eval(input("Qual a sua escolha?: "))
+    print("*"*21)
+    print("Escolha o seu jogo!")
+    print("*"*21)
 
-if jogo == 1:
-    print("Jogando forca...")
-    jogar_forca()
+    print("1 - Forca \n2 - Adivinhação")
+    jogo = eval(input("Qual a sua escolha?: "))
 
-elif jogo == 2:
-    print("Jogando adivinhação...")
-    jogar_adivinhacao()
+    if jogo == 1:
+        print("Jogando forca...")
+        jogar_forca()
 
-else:
-    print("Opção inválida!")
+    elif jogo == 2:
+        print("Jogando adivinhação...")
+        jogar_adivinhacao()
+
+    else:
+        print("Opção inválida!")
+
+if __name__ == "__main__":
+    escolhe_jogo()
