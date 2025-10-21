@@ -1,28 +1,70 @@
+import random
+
+def introducao():
+    print("*" * 28)
+    print("Bem-Vindo ao jogo de Forca!")
+    print("*" * 28)
+
+def carrega_palavra_secreta():
+    arquivo = open("palavras.txt", "r")
+
+    palavras = []
+
+    for linha in arquivo:
+        linha = linha.strip()
+        palavras.append(linha)
+
+    arquivo.close()
+
+    numero = random.randrange(0, len(palavras))
+    palavra_secreta = palavras[numero].lower()
+
+    return palavra_secreta
+
+def inicializa_letras_acertadas(palavra):
+    lista = ["_" for letra in palavra]
+
+    return lista
+
+def seu_chute():
+    chute = input("Qual letra? ").strip().lower()
+
+    return chute
+
+def marca_chute_correto(chute, letras_acertadas, palavra_secreta):
+    i = 0
+    for letra in palavra_secreta:
+        if chute == letra:
+            letras_acertadas[i] = letra
+        i += 1
+
+def mensagem_vencedor():
+    print("Você ganhou!")
+
+def mensagem_perdedor():
+    print("Você perdeu!")
+
+
 def jogar_forca():
 
-    print("*"*28)
-    print("Bem-Vindo ao jogo de Forca!")
-    print("*"*28)
+    introducao()
 
-    palavra_secreta = "banana".lower()
-    letras_acertadas = ["_" for letra in palavra_secreta]
+    palavra_secreta = carrega_palavra_secreta()
+
+    letras_acertadas = inicializa_letras_acertadas(palavra_secreta)
+
+    print(letras_acertadas)
 
     enforcou = False
     acertou = False
     erros = 0
 
-    print(letras_acertadas)
-
     while not enforcou and not acertou:
 
-        chute = input("Qual letra? ").strip().lower()
+        chute = seu_chute()
 
         if chute in palavra_secreta:
-            i = 0
-            for letra in palavra_secreta:
-                if chute == letra:
-                    letras_acertadas[i] = letra
-                i += 1
+            marca_chute_correto(chute, letras_acertadas, palavra_secreta)
 
         else:
             erros += 1
@@ -33,12 +75,11 @@ def jogar_forca():
         print(letras_acertadas)
 
     if acertou:
-        print("Você Ganhou!!")
+        mensagem_vencedor()
 
     else:
-        print("Você Perdeu!")
+        mensagem_perdedor()
 
-    print("Fim do Jogo!")
 
 if __name__ == "__main__":
     jogar_forca()
