@@ -39,11 +39,90 @@ def marca_chute_correto(chute, letras_acertadas, palavra_secreta):
         i += 1
 
 def mensagem_vencedor():
-    print("Você ganhou!")
+    print("Parabéns, Você ganhou!")
 
-def mensagem_perdedor():
-    print("Você perdeu!")
+def mensagem_perdedor(palavra_secreta):
+    print("Puxa, você foi enforcado!")
+    print(f"A palavra era {palavra_secreta}")
 
+def desenha_forca(erros):
+    if erros == 0:
+        print("""
+             _______
+            |/      
+            |      
+            |      
+            |       
+            |      
+            |
+            |___
+                """)
+    elif erros == 1:
+        print("""
+             _______
+            |/      |
+            |      (_)
+            |      
+            |       
+            |      
+            |
+            |___
+                """)
+    elif erros == 2:
+        print("""
+             _______
+            |/      |
+            |      (_)
+            |       |
+            |       |
+            |      
+            |
+            |___
+                """)
+    elif erros == 3:
+        print("""
+             _______
+            |/      |
+            |      (_)
+            |      \\|
+            |       |
+            |      
+            |
+            |___
+                """)
+    elif erros == 4:
+        print("""
+             _______
+            |/      |
+            |      (_)
+            |      \\|/
+            |       |
+            |      
+            |
+            |___
+                """)
+    elif erros == 5:
+        print("""
+             _______
+            |/      |
+            |      (_)
+            |      \\|/
+            |       |
+            |      / 
+            |
+            |___
+                """)
+    elif erros == 6:
+        print("""
+             _______
+            |/      |
+            |      (_)
+            |      \\|/
+            |       |
+            |      / \\
+            |
+            |___
+                """)
 
 def jogar_forca():
 
@@ -68,6 +147,7 @@ def jogar_forca():
 
         else:
             erros += 1
+            desenha_forca(erros)
 
         enforcou = erros == 6
         acertou = "_" not in letras_acertadas
@@ -78,7 +158,7 @@ def jogar_forca():
         mensagem_vencedor()
 
     else:
-        mensagem_perdedor()
+        mensagem_perdedor(palavra_secreta)
 
 
 if __name__ == "__main__":
